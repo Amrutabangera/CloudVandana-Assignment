@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* CSS styling */
+        .calculator {
+            width: 280px;
+            border: 2px solid #ccc;
+            padding: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        input[type="button"] {
+            width: 50px;
+            height: 30px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="calculator">
+        <input type="text" id="display" readonly style="width: 180px; height: 20px;">
+        <input type="button" value="AC" onclick="clearDisplay()" style="background-color:mediumturquoise; color: white;">
+        <br>
+        <input type="button" value="9" onclick="appendToDisplay('9')" style="background-color: black; color: white;">
+        <input type="button" value="8" onclick="appendToDisplay('8')" style="background-color: black; color: white;">
+        <input type="button" value="7" onclick="appendToDisplay('7')" style="background-color: black; color: white;">
+        <input type="button" value="+" onclick="appendToDisplay('+')" style="background-color: gray; color: white;">
+        <br>
+        <input type="button" value="4" onclick="appendToDisplay('4')" style="background-color: black; color: white;">
+        <input type="button" value="5" onclick="appendToDisplay('5')" style="background-color: black; color: white;">
+        <input type="button" value="6" onclick="appendToDisplay('6')" style="background-color: black; color: white;">
+        <input type="button" value="-" onclick="appendToDisplay('-')" style="background-color: gray; color: white;">
+        <br>
+        <input type="button" value="1" onclick="appendToDisplay('1')" style="background-color: black; color: white;">
+        <input type="button" value="2" onclick="appendToDisplay('2')" style="background-color: black; color: white;">
+        <input type="button" value="3" onclick="appendToDisplay('3')" style="background-color: black; color: white;">
+        <input type="button" value="/" onclick="appendToDisplay('/')" style="background-color: gray; color: white;">
+        <br>
+        <input type="button" value="." onclick="appendToDisplay('.')" style="background-color: black; color: white;">
+        <input type="button" value="0" onclick="appendToDisplay('0')" style="background-color: black; color: white;">
+        <input type="button" value="=" onclick="calculate('=')" style="background-color: black; color: white;">
+        <input type="button" value="*" onclick="appendToDisplay('*')" style="background-color: gray; color: white;">
+    </div>
+
+    <script>
+        function appendToDisplay(val) {
+            document.getElementById('display').value += val;
+        }
+    
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+    
+        function calculate() {
+            var input = document.getElementById('display').value;
+            var result = eval(input);
+            document.getElementById('display').value = result;
+        }
+    </script>
+    
+    </body>
+    </html>
+    

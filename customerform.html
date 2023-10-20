@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body style="background-color: skyblue; color: white;">
+    <center><h1>Customer Survey Form</h1> </center>
+    <div class="survey-form">
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" required>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" required>
+        </div>
+
+        <div class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" required>
+        </div>
+
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <select id="country" required>
+                <option value="">Select Country</option>
+                <!-- Add your country options here -->
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <option value="Canada">Canada</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Gender:</label><br>
+            <input type="checkbox" id="male" value="male">
+            <label for="male">Male</label><br>
+            <input type="checkbox" id="female" value="female">
+            <label for="female">Female</label><br>
+        </div>
+
+        <div class="form-group">
+            <label for="profession">Profession:</label>
+            <input type="text" id="profession" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="mobile">Mobile Number:</label>
+            <input type="text" id="mobile" required>
+        </div>
+
+        <button onclick="submitForm()">Submit</button>
+        <button onclick="resetForm()">Reset</button>
+    </div>
+
+    <div id="popup">
+        <h3>Survey Form Submission</h3>
+        <div id="popup-content"></div>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <script>
+        function submitForm() {
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var dob = document.getElementById('dob').value;
+            var country = document.getElementById('country').value;
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var profession = document.getElementById('profession').value;
+            var email = document.getElementById('email').value;
+            var mobile = document.getElementById('mobile').value;
+
+            if (firstName && lastName && dob && country && gender && profession && email && mobile) {
+                var popupContent = "<p><strong>First Name:</strong> " + firstName + "</p>" +
+                    "<p><strong>Last Name:</strong> " + lastName + "</p>" +
+                    "<p><strong>Date of Birth:</strong> " + dob + "</p>" +
+                    "<p><strong>Country:</strong> " + country + "</p>" +
+                    "<p><strong>Gender:</strong> " + gender.value + "</p>" +
+                    "<p><strong>Profession:</strong> " + profession + "</p>" +
+                    "<p><strong>Email:</strong> " + email + "</p>" +
+                    "<p><strong>Mobile Number:</strong> " + mobile + "</p>";
+
+                document.getElementById('popup-content').innerHTML = popupContent;
+                document.getElementById('popup').style.display = 'block';
+            } else {
+                alert("Please fill all the required fields.");
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('firstName').value = "";
+            document.getElementById('lastName').value = "";
+            document.getElementById('dob').value = "";
+            document.getElementById('country').value = "";
+            document.getElementById('male').checked = false;
+            document.getElementById('female').checked = false;
+            document.getElementById('profession').value = "";
+            document.getElementById('email').value = "";
+            document.getElementById('mobile').value = "";
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            resetForm();
+        }
+    </script>
+
+</body>
+
+</html>
